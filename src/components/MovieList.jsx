@@ -6,8 +6,8 @@ function MovieList({ movies, onSelect }) {
       {movies.map((movie) => (
         <div key={movie.imdbID} onClick={() => onSelect(movie.imdbID)}>
           <MovieCard
-            title={movie.Title}
-            poster={movie.Poster}
+            Title={movie.Title}
+            Poster={movie.Poster}
             Year={movie.Year}
           />
         </div>

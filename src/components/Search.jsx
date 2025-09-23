@@ -10,7 +10,7 @@ function Search({ onSearch }) {
 
     const response = await fetch(
       `https://www.omdbapi.com/?apikey=${
-        import.meta.env.API_KEY
+        import.meta.env.VITE_OMDB_API_KEY
       }&type=movie&s=${input}
         `
     );
@@ -24,6 +24,7 @@ function Search({ onSearch }) {
   };
 
   return (
+    
     <div className="search-box">
       <input
         type="text"
