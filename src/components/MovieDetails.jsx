@@ -1,4 +1,3 @@
-// components/MovieDetails.jsx
 import { useEffect, useState } from "react";
 
 function MovieDetails({ imdbID, onBack, onAddFavorite }) {
@@ -25,7 +24,7 @@ function MovieDetails({ imdbID, onBack, onAddFavorite }) {
       <p><b>Director:</b> {movie.Director}</p>
       <p><b>Plot:</b> {movie.Plot}</p>
       <img src={movie.Poster} alt={movie.Title} />
-      <button onClick={() => onAddFavorite(movie)}>❤️ Add to favorites</button>
+      <button onClick={() => onAddFavorite(movie)}>⭐ Add to favorites</button>
     </div>
   );
 }

@@ -1,17 +1,19 @@
-function MovieCard(props){
-    return(
-        <div>
-            <div>
-                <p className="card-title">{props.Title}</p>
-            </div>
-            <div>
-                <img src={props.Poster} alt="movie poster" />
-            </div>
-            <div className="footer-info">
-                <p>Year {props.Year}</p>
-            </div>
-        </div>
-    );
+function MovieCard({ title, poster, Year }) {
+  const fallbackPoster =
+    "https://via.placeholder.com/300x445.png?text=No+Image";
+
+  return (
+    <div className="movie-card">
+      <p className="card-title">{title}</p>
+      <img
+        src={poster !== "N/A" ? poster : fallbackPoster}
+        alt={`${title} poster`}
+      />
+      <div className="footer-info">
+        <p>Year: {Year}</p>
+      </div>
+    </div>
+  );
 }
 
 export default MovieCard;

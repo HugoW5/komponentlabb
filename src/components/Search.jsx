@@ -16,8 +16,8 @@ function Search({ onSearch }) {
     );
     const data = await response.json();
 
-    if(data.search){
-        onSearch(data.search);
+    if(data.Search){
+        onSearch(data.Search);
     }else{
         onSearch([]);
     }
