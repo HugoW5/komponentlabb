@@ -1,6 +1,6 @@
 import MovieCard from "./MovieCard";
 
-function MovieList({ movies, onSelect }) {
+function MovieList({ movies, onSelect, onAddFavorite }) {
   if (!movies || movies.length === 0) {
     return <p>No movies found.</p>;
   }
@@ -13,6 +13,7 @@ function MovieList({ movies, onSelect }) {
             title={movie.Title}
             poster={movie.Poster}
             Year={movie.Year}
+            onFavorite={() => onAddFavorite(movie)}
           />
         </div>
       ))}

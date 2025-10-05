@@ -1,16 +1,18 @@
-function MovieCard({ title, poster, Year }) {
-  const fallbackPoster =
-    "https://via.placeholder.com/300x445.png?text=No+Image";
+function MovieCard({ title, poster, Year, onFavorite }) {
+  const fallbackPoster = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png";
 
   return (
     <div className="movie-card">
-      <p className="card-title">{title}</p>
       <img
         src={poster !== "N/A" ? poster : fallbackPoster}
         alt={`${title} poster`}
       />
-      <div className="footer-info">
-        <p>Year: {Year}</p>
+      <div className="card-info">
+        <h4>{title}</h4>
+        <p>{Year}</p>
+        {onFavorite && (
+          <button onClick={onFavorite}>⭐</button>
+        )}
       </div>
     </div>
   );

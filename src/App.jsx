@@ -3,10 +3,13 @@ import Search from "./components/Search";
 import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
 import Favorites from "./components/Favorites";
-import './app.css'
+import Tutorial from "./components/Tutorial";
+
+import "./app.css";
 
 function App() {
-   const [movies, setMovies] = useState([]);
+  const [view, setView] = useState("home");
+  const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem("favorites");
@@ -23,22 +26,48 @@ function App() {
     }
   };
 
-  return (
-    <div>
-      <h1>🎬 Movie Explorer</h1>
-      <Search onSearch={setMovies} />
-      
-      <Favorites favorites={favorites} onSelect={setSelectedMovie} />
+  const handleRemoveFavorite = (id) => {
+    setFavorites((prev) => prev.filter((f) => f.imdbID !== id));
+  };
 
-      {!selectedMovie ? (
-        <MovieList movies={movies} onSelect={setSelectedMovie} />
-      ) : (
-        <MovieDetails
-          imdbID={selectedMovie}
-          onBack={() => setSelectedMovie(null)}
-          onAddFavorite={handleAddFavorite}
+  return (
+    <div className="app-container">
+      <aside>
+        <h1>Movie Explorer</h1>
+        <nav>
+          <button onClick={() => setView("home")}>Home</button>
+          <button onClick={() => setView("tutorial")}>Tutorial</button>
+        </nav>
+        <Favorites
+          favorites={favorites}
+          onSelect={setSelectedMovie}
+          onRemove={handleRemoveFavorite}
         />
-      )}
+      </aside>
+
+      <main>
+        {view === "tutorial" ? (
+          <Tutorial />
+        ) : (
+          <>
+            <Search onSearch={setMovies} />
+
+            {!selectedMovie ? (
+              <MovieList
+                movies={movies}
+                onSelect={setSelectedMovie}
+                onAddFavorite={handleAddFavorite}
+              />
+            ) : (
+              <MovieDetails
+                imdbID={selectedMovie}
+                onBack={() => setSelectedMovie(null)}
+                onAddFavorite={handleAddFavorite}
+              />
+            )}
+          </>
+        )}
+      </main>
     </div>
   );
 }
