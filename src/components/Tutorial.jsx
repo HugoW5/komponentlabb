@@ -41,7 +41,7 @@ function Tutorial() {
         <h3>MovieCard</h3>
         <p>Visar titel, år och bild för en film.</p>
         <pre>{`<MovieCard title="Inception" poster="..." Year="2010" />`}</pre>
-        <MovieCard title="Inception" Poster="N/A" Year="2010" />
+        <MovieCard title="Inception" Poster="https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg" Year="2010" />
       </section>
 
       <section>
